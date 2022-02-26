@@ -1,12 +1,13 @@
 #imports
 import time
+from mockDatabase import Database
 
 class StopwatchTracker:
 
     #Initialize variables
     def __init__(self):
         self.isRunning = False
-        self.database = None
+        self.database = Database()
         self.startTime = time.time()
         self.endTime = time.time()
 
