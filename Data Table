@@ -1,5 +1,9 @@
 import mysql.connector
 
+class Database:
+
+# Log in to mySQL
+def init(self):
 mydb = mysql.connector.connect(
   host="localhost",
   user="iferrada",  #yourusername
@@ -12,34 +16,23 @@ mycursor = mydb.cursor()
 
 
 
+mycursor.execute("CREATE TABLE times (day int))")
 
 
-#mycursor.execute("SHOW TABLES")
-
-#for x in mycursor:
-#  print(x)
-
-#Table name times
-
-#mycursor.execute("CREATE TABLE times (hour int, min int, sec int)") 
-
-#mycursor.execute("CREATE TABLE times (id INT AUTO_INCREMENT PRIMARY KEY))")
-
-
-
-
-
-
-timeStore_hour = input("")
-timeStore_min = input("")
-timeStore_sec = input("")
-mycursor.execute("INSERT INTO times (hour, min, sec) VALUES ('{}', {}, '{}')".format(timeStore_hour, timeStore_min, timeStore_sec))
+#time inputs
+ def storeData(sec, min, hrs, day):
+timeStore_day = day
+timeStore_hour = hrs
+timeStore_min = min
+timeStore_sec = sec
+mycursor.execute("INSERT INTO times (day, hour, min, sec) VALUES ('{}', {}, '{}')".format(timeStore_hour, timeStore_min, timeStore_sec))
 
 mydb.commit()
 
+#return time columns
+def History():
 mycursor.execute("SELECT * FROM times")
 
 myresult = mycursor.fetchall()
 
-for x in myresult:
-  print(x)
+return myresult
