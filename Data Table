@@ -1,0 +1,40 @@
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="iferrada",
+  password="Vermillion#1",
+  database = "TimeStore"
+)
+
+
+mycursor = mydb.cursor()
+
+
+
+
+
+#mycursor.execute("SHOW TABLES")
+
+#for x in mycursor:
+#  print(x)
+
+#Table name times
+
+#mycursor.execute("CREATE TABLE times (hour int, min int, sec int)") 
+
+#mycursor.execute("CREATE TABLE times (id INT AUTO_INCREMENT PRIMARY KEY))")
+
+
+
+
+
+
+timeStore_hour = input("")
+timeStore_min = input("")
+timeStore_sec = input("")
+mycursor.execute("INSERT INTO times (hour, min, sec) VALUES ('{}', {}, '{}')".format(timeStore_hour, timeStore_min, timeStore_sec))
+
+mydb.commit()
+
+
