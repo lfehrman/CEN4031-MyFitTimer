@@ -10,11 +10,10 @@ mydb = mysql.connector.connect(
   password="Vermillion#1", #yourpassword
   database = "TimeStore"
 )
-
-
 mycursor = mydb.cursor()
 
-
+#First time running the application
+#mycursor.execute("CREATE TABLE times (id INT AUTO_INCREMENT PRIMARY KEY, day int, hour int, min int, sec int)") 
 
 mycursor.execute("CREATE TABLE times (day int))")
 
