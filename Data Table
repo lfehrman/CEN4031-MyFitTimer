@@ -37,4 +37,9 @@ mycursor.execute("INSERT INTO times (hour, min, sec) VALUES ('{}', {}, '{}')".fo
 
 mydb.commit()
 
+mycursor.execute("SELECT * FROM times")
 
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
