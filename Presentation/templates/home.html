@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<head>
+	<div class="jumbotron text-center">
+		<h1>My Fit Timer</h1>
+		<p class="lead">This Application is built using python and flask framework</p>
+	</div>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type=text/javascript>
+		$(function() {
+			$('a#start').on('click', function(e) {
+			e.preventDefault()
+			$.getJSON('/start_function', 
+				function(data) {
+				
+			});
+			return false;
+			});
+			$('a#stop').on('click', function(e) {
+			e.preventDefault()
+			$.getJSON('/stop_function', 
+				function(data) {
+				
+			});
+			return false;
+			});
+			$('a#getTime').getJSON('/start_function',
+				function(data){
+				return timer_result
+			});
+			return false;
+		});
+	</script>
+	<div class="timer">
+		<a href=# class=timer-text><p>00:00:00:00</p></a>
+	
+	<div class='btn-group'>
+		<form>
+			<a href=# id=start><button class=button>Start Timer</button></a>
+			<a href=# id=stop><button class=button>Stop Timer</button></a>
+		</form>
+	</div>
+	<div id="history">
+		<p class="history-text">Elapsed Time</p>
+	</div>
+</body>
+
+
+{% endblock %}
