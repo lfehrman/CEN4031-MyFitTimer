@@ -19,7 +19,7 @@ class Database:
     self.mycursor.execute("CREATE TABLE IF NOT EXISTS times (id INT AUTO_INCREMENT PRIMARY KEY, day int, hour int, min int, sec int)")
 
 
-  #time input
+  #Time input
   def storeData(self, day, hrs, min, sec):
     timeStore_day = day
     timeStore_hour = hrs
@@ -29,7 +29,7 @@ class Database:
 
     self.mydb.commit()
 
-  #return time columns
+  #Return time columns
   def getHistory(self):
     self.mycursor.execute("SELECT * FROM times")
 
