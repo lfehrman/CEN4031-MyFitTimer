@@ -11,47 +11,33 @@
 <body>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type=text/javascript>
-	
 		$(function() {
+			// When the start timer button is clicked, call the start_function route.
+			// This runs the start(self) method which runs the stopwatch.
 			$('a#start').on('click', function(e) {
 				e.preventDefault()
 				$.getJSON('/start_function', 
 					function(data) {
-						//while start() is running change label to getTime
-						//while({{timer.isRunning}} == True) {
-							//$('#lblTimer').text({{timer.getTime()}});
-						//}
-					}
+					
 			});
 			return false;
 			});
-			
-			
-			
-			$('a#stop').on('click', function(e) {
-			e.preventDefault()
-			$.getJSON('/stop_function', 
-				function(data) {
-				
-			});
-			return false;
-			});
-			}
 		});
 	</script>
-	
-	<div class='btn-group'>
-		<form id=form>
-			<label id="lblTimer" class="timer">{{ timer }}</label>
-			<a href=# id=start><button onclick="showTimer()" class=button>Start Timer</button></a>
-			<a href=# id=stop><button class=button>Stop Timer</button></a>
-		</form>
-	</div>
-	<div id=history>
-		<form id=form>
-			<label id=lblElapsed class="history-text">Elapsed Time</p>
-			<label id=lblHistory class="history-text"></p>
-		</form>
+	<div class='container'>
+		<div class='center'>
+			<form action = "/stopwatch" method = "post">
+				<br></br>
+				<h3>Please Click the Start Timer and then the Stop Timer</h3>
+				<a href=# id=start><button class=button>Start Timer</button></a>
+				<p><input type = "submit" value = "Stop Timer"/></p>
+			</form>
+			<br></br>
+			<form action = "/stored" method = "post">
+				<h3>Click on Timer History to see your History of Elapsed Times</h3>
+				<p><input type = "submit" value = "Timer History"/></p>
+			</form>
+		</div>
 	</div>
 </body>
 
