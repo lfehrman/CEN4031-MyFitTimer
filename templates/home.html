@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<head>
+	<div class="jumbotron text-center">
+		<h1>My Fit Timer</h1>
+		<p class="lead">This Application is built using python and flask framework</p>
+	</div>
+	<link rel="stylesheet" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type=text/javascript>
+	
+		$(function() {
+			$('a#start').on('click', function(e) {
+				e.preventDefault()
+				$.getJSON('/start_function', 
+					function(data) {
+						//while start() is running change label to getTime
+						//while({{timer.isRunning}} == True) {
+							//$('#lblTimer').text({{timer.getTime()}});
+						//}
+					}
+			});
+			return false;
+			});
+			
+			
+			
+			$('a#stop').on('click', function(e) {
+			e.preventDefault()
+			$.getJSON('/stop_function', 
+				function(data) {
+				
+			});
+			return false;
+			});
+			}
+		});
+	</script>
+	
+	<div class='btn-group'>
+		<form id=form>
+			<label id="lblTimer" class="timer">{{ timer }}</label>
+			<a href=# id=start><button onclick="showTimer()" class=button>Start Timer</button></a>
+			<a href=# id=stop><button class=button>Stop Timer</button></a>
+		</form>
+	</div>
+	<div id=history>
+		<form id=form>
+			<label id=lblElapsed class="history-text">Elapsed Time</p>
+			<label id=lblHistory class="history-text"></p>
+		</form>
+	</div>
+</body>
+
+
+{% endblock %}
