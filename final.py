@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import time
 # st shorthand for StopwatchTracker.py
-import StopwatchTracker as st
+import Application.StopwatchTracker as st
 app = Flask(__name__)
 app.debug = True
 # StopwatchTracker constructor
@@ -37,21 +37,11 @@ def stopwatch():
     my_st.stop()
     # Show that an end time was created in the console
     print(my_st.endTime)
-    # Store the times
-    my_st.getTime()
     # Calculate the elapsed time
-    elapsedTime = my_st.endTime - my_st.startTime
-    # Calculate the days, hours, minutes, and seconds
-    minutes = elapsedTime // 60
-    seconds = elapsedTime % 60
-    hours = minutes // 60
-    minutes = minutes % 60
-    days = hours // 24
-    # Format the time
-    formattedTime = f"{days:02d}:{hours:02d}:{minutes:02d}:{seconds:02d}"
+    elapsedTime = my_st.getTime()
     if request.method == 'POST':
         # Change the POST to the formatted time
-        user = formattedTime
+        user = elapsedTime
         # Return the user variable as timer
         return redirect(url_for('success',timer = user))
 
