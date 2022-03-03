@@ -14,14 +14,18 @@
 		$(function() {
 			// When the start timer button is clicked, call the start_function route.
 			// This runs the start(self) method which runs the stopwatch.
-			$('a#start').on('click', function(e) {
-				e.preventDefault()
+			$('#start').on('click', function(e) {
+				$('#start button').addClass("activeButton");
+				e.preventDefault();
 				$.getJSON('/start_function', 
 					function(data) {
 					
 			});
 			return false;
 			});
+			$('#stopbutton').on('click', function(e){
+				$('#start button').removeClass("activeButton");
+			})
 		});
 	</script>
 	<div class='container'>
@@ -29,8 +33,8 @@
 			<form action = "/stopwatch" method = "post">
 				<br></br>
 				<h3>Please Click the Start Timer and then the Stop Timer</h3>
-				<a href=# id=start><button class=button>Start Timer</button></a>
-				<p><input type = "submit" value = "Stop Timer"/></p>
+				<a href=# id='start'><button class=button>Start Timer</button></a>
+				<p><input id="stopbutton" type = "submit" value = "Stop Timer"/></p>
 			</form>
 			<br></br>
 			<form action = "/stored" method = "post">

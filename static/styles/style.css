@@ -48,3 +48,7 @@ input[type=submit] {
     background-color: white;
     color: rgb(0, 0, 0);
 }
+
+.activeButton{
+    background-color: lightgray;
+}
