@@ -1,15 +1,15 @@
 from tracemalloc import stop
 import unittest
-from unittest import mock
 import time
-from StopwatchTracker import StopwatchTracker
+from DataAccess.DataTable import Database
+from Application.StopwatchTracker import StopwatchTracker
 
 def convertTime(time):
-    minutes = time // 60
-    seconds = time % 60
-    hours = minutes // 60
-    minutes = minutes % 60
-    days = hours // 24
+    minutes = int(time // 60)
+    seconds = int(time % 60)
+    hours = int(minutes // 60)
+    minutes = int(minutes % 60)
+    days = int(hours // 24)
 
     return f"{days}:{hours}:{minutes}:{seconds}"
 
@@ -50,6 +50,14 @@ class StopwatchTrackerUnitTests(unittest.TestCase):
         self.assertEqual(stopwatch.getTime(), elapsedTime)
         time.sleep(2)
         self.assertEqual(stopwatch.getTime(), elapsedTime)
+
+    def test_getHistory(self):
+        stopwatch = StopwatchTracker()
+        database = Database()
+        swHistory = stopwatch.getHistory()[0]
+        dbHistory = database.getHistory()[0]
+        dbHistory = f"{dbHistory[1]}:{dbHistory[2]}:{dbHistory[3]}:{dbHistory[4]}"
+        self.assertEqual(swHistory, dbHistory)
 
 if __name__ == '__main__':
     unittest.main()
